@@ -1,0 +1,88 @@
+@mixin clearfix {
+    &:after {
+        clear: both;
+        display: table;
+        content: '';
+    }
+}
+
+@mixin perf {
+    transform: translateZ(0);
+}
+
+@mixin title {
+    font-weight: bold;
+    margin-top: 20rem;
+    &:first-child {
+        margin-top: 0;
+    }
+}
+
+@mixin subtitle {
+    font-weight: bold;
+    margin-top: 10rem;
+    &:first-child {
+        margin-top: 0;
+    }
+}
+
+@mixin valign {
+    text-align: center;
+    white-space: nowrap;
+    font-size: 0;
+    &:before {
+        content: '';
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle;
+    }
+    & > * {
+        display: inline-block;
+        vertical-align: middle;
+        width: 100%;
+        font-size: $font-size-medium;
+        white-space: normal;
+    }
+}
+
+/* you also can include subclasses */
+@mixin content {
+    h2 {
+        font-size: $font-size-big;
+        margin-bottom: $space-medium;
+    }
+    strong {
+        font-weight: bold;
+    }
+    p {
+        margin-bottom: $space-medium;
+    }
+    *:last-child {
+        margin-bottom: 0;
+    }
+}
+
+@mixin responsive-big {
+    @media screen and (max-width: $breakpoint-big) {
+        @content;
+    }
+}
+
+@mixin responsive-medium {
+    @media screen and (max-width: $breakpoint-medium) {
+        @content;
+    }
+}
+
+@mixin responsive-small {
+    @media screen and (max-width: $breakpoint-small) {
+        @content;
+    }
+}
+
+/* you can achieve "dynamic variables" that change on viewports */
+@mixin padding {
+    padding:$space-big;
+    @include responsive-medium { padding: $space-medium; }
+    @include responsive-small { padding: $space-small; }
+}
