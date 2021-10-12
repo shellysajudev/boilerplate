@@ -5,8 +5,7 @@ module.exports = {
             ? [
                   require('autoprefixer'),
                   require('tailwindcss'),
-                  require('cssnano')({ preset: 'default' }),
-                  require('postcss-url')({ url: 'inline', basePath: ['./', './_fonts/'] })
+                  require('cssnano')({ preset: 'default' })
               ]
             : [require('tailwindcss')]
 };
